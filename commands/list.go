@@ -46,13 +46,13 @@ func printTasks(tasks []repository.Task) {
 		fmt.Println()
 		return
 	}
-	fmt.Println("\n====================")
+	fmt.Println("\n============================================================")
 	fmt.Printf("Total Tasks: %d\n", totalTasks)
-	fmt.Println("====================")
+	fmt.Println("============================================================")
 	for _, task := range tasks {
 		printTask(&task)
 	}
-	fmt.Println("====================")
+	fmt.Println("============================================================")
 	fmt.Println()
 }
 
