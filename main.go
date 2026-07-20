@@ -15,6 +15,8 @@ var commandsMap = map[string]HandleOptions{
 	"list":   commands.ListTasks,
 	"update": commands.UpdateTask,
 	"delete": commands.DeleteTask,
+	"mark-in-progress": commands.MarkInProgress,
+	"mark-done": commands.AddTask,
 }
 
 func main() {
@@ -26,7 +28,11 @@ func main() {
 	command := os.Args[1]
 	options := os.Args[2:]
 
-	err := commandsMap[command](options)
+	commandFn, ok := commandsMap[command]
+	if !ok {
+		log.Fatal("Invalid command.")
+	}
+	err := commandFn(options)
 	if err != nil {
 		log.Fatal(err)
 	}
