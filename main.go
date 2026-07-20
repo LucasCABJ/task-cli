@@ -11,12 +11,12 @@ import (
 type HandleOptions func([]string) error
 
 var commandsMap = map[string]HandleOptions{
-	"add":    commands.AddTask,
-	"list":   commands.ListTasks,
-	"update": commands.UpdateTask,
-	"delete": commands.DeleteTask,
+	"add":              commands.AddTask,
+	"list":             commands.ListTasks,
+	"update":           commands.UpdateTask,
+	"delete":           commands.DeleteTask,
 	"mark-in-progress": commands.MarkInProgress,
-	"mark-done": commands.AddTask,
+	"mark-done":        commands.MarkDone,
 }
 
 func main() {

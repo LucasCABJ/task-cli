@@ -17,8 +17,8 @@ const (
 )
 
 type Tasks struct {
-	Total int    `json:"total"`
-	Tasks []Task `json:"tasks"`
+	LastInsert int    `json:"last_insert"`
+	Tasks      []Task `json:"tasks"`
 }
 
 type Task struct {
@@ -38,9 +38,9 @@ func AddTask(task Task) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	newTaskID := tasks.Total + 1
+	newTaskID := tasks.LastInsert + 1
 	task.ID = newTaskID
-	tasks.Total++
+	tasks.LastInsert++
 	tasks.Tasks = append(tasks.Tasks, task)
 	err = saveTasks(tasks)
 	if err != nil {
